@@ -1,7 +1,8 @@
-import pandas as pd
-import networkx
 from pathlib import Path
+
+import networkx
 import obonet
+import pandas as pd
 import parse_survey_fields
 
 
@@ -277,9 +278,9 @@ def main(survey_desc_f, choice_config_f, hpo_f, samples_response_dir, out_dir):
 
 
 if __name__ == "__main__":
-    SURVEY_HPO_F = "configs/survey_HPO_added.csv"
-    CHOICES_CONFIG_F = "configs/choice_values_to_include.json"
-    HPO_F = "data/external/hp_12feb2022.obo"
-    SAMPLES_RESPONSE_INDIR = "data/interim/sample_survey_response"
-    OUT_DIR = f"data/processed/sample_hpo/programmatic_output"
+    SURVEY_HPO_F = "configs/survey_HPO_added.csv"   # survey key file with manually added HPO related info
+    CHOICES_CONFIG_F = "configs/choice_values_to_include.json"  # informs how to process field choices
+    HPO_F = "data/external/hp_12feb2022.obo"    # HPO dataset
+    SAMPLES_RESPONSE_INDIR = "data/interim/sample_survey_response"    # contains participant survey response files in xlsx format
+    OUT_DIR = "data/processed/sample_hpo/programmatic_output"
     main(SURVEY_HPO_F, CHOICES_CONFIG_F, HPO_F, SAMPLES_RESPONSE_INDIR, OUT_DIR)
