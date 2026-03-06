@@ -1,27 +1,27 @@
-# Map PWS survey to HPO
+# Build HPO profile for participants from their PWS survey
 
-Surveys (with >300 rows/fields) were collected from the PWS participants. Here, we systematically process these survey
-responses and identify Human Phenotype Ontology (HPO) IDs relevant for each participant.
+Surveys (with >300 rows/fields) were collected from PWS participants. Here, we systematically process these survey
+responses and build participant-specific phenotype profile using Human Phenotype Ontology (HPO).
 
-## Requirements
+## Map survey questions/fields to HPO
 
-* conda (v23+)
-
-## Map HPO to survey fields
-
-In the key file serving as data dictionary describing survey fields with their descriptions and valid respones, HPO IDs
-were manually added using the criteria below, and the file was saved as `configs/survey_HPO_added.csv` (**TODO - mention
-if this file is included in the repo or not after we decide on how to proceed**).
+Each field/question in the survey was manually mapped to HPO IDs using the following criteria:
 
 * Based on description in the `question text` column, appropriate HPO IDs were manually identified. Minority of them
  could be subjective or be using broader HPO terms.
 * If no appropriate HPO term was available, `NA` was used.
-* If a field was not a phenotype-related one, such as frequency or other quantitative fields, it was marked as
- `skip`.
+* If a field was not a phenotype-related one, such as frequency or other quantitative fields, it was marked as `skip`.
 * If a field maps to >1 HPO term, HPO IDs were added with string starting as `multiple HPO-`. For example, `multiple
  HPO-HP:0012210,HP:0000079`.
 * If a field needs further computational logic to choose an appropriate HPO ID, it was marked as `special`.
 * If a field needs manual review before choosing HPO IDs, it was marked as `manual`.
+
+Survey fields along with the added HPO IDs were saved in `configs/survey_HPO_added.csv`. Note that only a small subset
+of rows in this file is included in this repo, to demonstrate its file structure.
+
+## Requirements
+
+* conda (v23+)
 
 ## How to run
 
