@@ -13,27 +13,27 @@ breakpoints, genes, etc.). Genome sequencing coverage is also visualized providi
 ### Fetch and process gaps datasets
 
 ```sh
-# change into repo's root directory
-cd /path/to/pws_wgs_remote_study/
+# change into directory
+cd viz_cnv_roh
 
 # fetch and process gaps datasets
-snakemake -s src/viz_cnv_roh/prep_dependencies.smk -p
+snakemake -s src/prep_dependencies.smk -p
 ```
 
 ### Visualize ROHs and CNVs
 
 ```sh
-# change into repo's root directory
-cd /path/to/pws_wgs_remote_study/
+# change into directory
+cd viz_cnv_roh
 
 # create and activate conda env
-conda env create -f configs/viz_cnv_roh/envs/python_viz.yaml
+conda env create -f configs/envs/python_viz.yaml
 conda activate python_viz_pws
 
 # run viz script to visualize ROHs, CNVs and necessary annotations
 # Note: Several data files are needed to run this script. See the script for more info. For each data file needed,
 # we noted whether they are provided in this repo (full file or as an example) and how to create them.
-python src/viz_cnv_roh/plot_roh_cnv.py
+python src/plot_roh_cnv.py
 ```
 
 ### Visualize ROHs, CNVs and coverage
@@ -41,11 +41,11 @@ python src/viz_cnv_roh/plot_roh_cnv.py
 * Calculate coverage using mosdepth
 
 ```sh
-# change into repo's root directory
-cd /path/to/pws_wgs_remote_study/
+# change into directory
+cd viz_cnv_roh
 
 # create and activate conda env
-conda env create -f configs/viz_cnv_roh/envs/mosdepth.yaml
+conda env create -f configs/envs/mosdepth.yaml
 conda activate mosdepth_cov
 
 # now run mosdepth
@@ -75,15 +75,15 @@ done
 * Now visualize ROH, CNVs and coverage
 
 ```sh
-# change into repo's root directory
-cd /path/to/pws_wgs_remote_study/
+# change into directory
+cd viz_cnv_roh
 
 # create, if not already, and activate conda env
-conda env create -f configs/viz_cnv_roh/envs/python_viz.yaml
+conda env create -f configs/envs/python_viz.yaml
 conda activate python_viz_pws
 
 # run viz script to visualize ROHs, CNVs, coverage and necessary annotations.
 # Note: Several data files are needed to run this script. See the script for more info. For each data file needed,
 # we noted whether they are provided in this repo (full file or as an example) and how to create them.
-python src/viz_cnv_roh/plot_roh_cnv_cov.py
+python src/plot_roh_cnv_cov.py
 ```
