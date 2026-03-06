@@ -1,5 +1,6 @@
 """
-Visualizes CNV and ROH data along with useful annotations.
+Visualizes CNV, ROH and coverage data along with useful annotations.
+This script was modified from src/viz_cnv_roh/plot_roh_cnv.py to add viz support for coverage data.
 See if __name__ == "__main__" section for data files needed.
 """
 
@@ -140,7 +141,7 @@ def plot_patches(ax, df, source, colors, ylabel, annotation=False):
     "plot data as rectangle patches"
 
     # Define y-coordinates for the bands
-    height = 1
+    height = 2 if source in ["cnv", "roh", "fp_roh_gaps"] else 1
 
     x_list = []
     y_list = []
@@ -258,9 +259,13 @@ def plot_patches(ax, df, source, colors, ylabel, annotation=False):
             )
             ax.add_line(line)
 
-    # hide ticks and labels
-    ax.set_yticklabels([])
-    ax.set_yticks([])
+    if source in ["cytoband", "breakpoint", "genes"]:
+        # hide ticks and labels
+        ax.set_yticklabels([])
+        ax.set_yticks([])
+    else:
+        ax.yaxis.set_label_position("right")
+        ax.yaxis.tick_right()
 
     # no plot borders
     # ax.axis("off")
@@ -269,7 +274,8 @@ def plot_patches(ax, df, source, colors, ylabel, annotation=False):
     for spine in ax.spines.values():
         spine.set_edgecolor("darkgrey")
     ax.tick_params(colors="darkgrey", which="both")
-    ylabel_pos = 0.5 if source in ["cytoband", "breakpoint", "genes"] else 0
+    ylabel_pos = 0.5 if source in ["cytoband", "breakpoint", "genes"] else 0.5
+    ax.yaxis.set_label_position("left")
     ax.set_ylabel(ylabel, rotation=0, y=ylabel_pos, ha="right")
 
     return None
@@ -327,9 +333,6 @@ def read_roh_data(fpath, query_region, min_roh_mb=None):
 
     # restrict to region of interest
     sliced_df = slice_data_by_region(filter_df, query_region)
-    if len(sliced_df):
-        # print(sliced_df.head())
-        print(sliced_df["size_mb"].sum())
 
     return sliced_df
 
@@ -383,6 +386,36 @@ def read_cnv_data(fpath, gaps_pr, cnv_ignore_pr, query_region, overlap_threshold
     return sliced_df
 
 
+def read_coverage_data(fpath, query_region):
+    """
+    Reads mosdepth coverage depth and normalizes depth
+    """
+
+    df = pd.read_csv(fpath, sep="\t", header=None, names=["Chromosome", "Start", "End", "Depth"])
+
+    # restrict to chromosome in query
+    df = df.loc[df["Chromosome"] == query_region[0], :]
+
+    # calc midpoint for plotting purposes admd
+    df["midpoint"] = (df["Start"] + df["End"]) / 2
+
+    # normalize depth
+    df["depth_normalized"] = df["Depth"] / df["Depth"].median()
+
+    return df
+
+
+def plot_coverage(ax, df):
+    """
+    plots coverage as a line plot
+    """
+
+    ax.axhline(y=1, linestyle="--", linewidth=0.8, color="red")
+    ax.plot(df["midpoint"], df["depth_normalized"], color="black", linewidth=0.025)
+
+    return None
+
+
 def main(
     sample_config_f,
     samplename_map_f,
@@ -394,6 +427,7 @@ def main(
     roh_dirpath,
     false_pos_roh_gaps_f,
     cnvpytor_dirpath,
+    coverage_dirpath,
     breakpoints_f,
     query_region,
     outdir,
@@ -408,7 +442,7 @@ def main(
     # controls subplots size as well as figure size
     extra_rows = 3
     nrows = len(sample_list) + extra_rows
-    height_ratios = [1] * nrows
+    height_ratios = [3] * nrows
     height_ratios[0] = 4
     height_ratios[1] = 3
     height_ratios[2] = 6
@@ -529,6 +563,12 @@ def main(
             axes[axes_no], cnv_df, "cnv", colors_dict["cnv"], ylabel=samplename_map_dict[sample]
         )
 
+        ##########  Coverage  ##########
+        mosdepth_f = Path(coverage_dirpath) / sample / f"{sample}.regions.bed.gz"
+        coverage_df = read_coverage_data(mosdepth_f, query_region)
+
+        plot_coverage(axes[axes_no], coverage_df)
+
     # Set xaxis limits and labelling
     axes[0].set_xlim(cytoband_df["Start"].min(), cytoband_df["End"].max())
     axes[nrows - 1].set_xlabel("Position", color="black")
@@ -541,9 +581,9 @@ def main(
     fig.suptitle(fig_title, fontsize=14)
 
     # time to save
-    # Path(outdir).mkdir(exist_ok=True, parents=True)
-    # outfile = Path(outdir) / f"{fig_title.replace(' ', '')}.png"
-    # fig.savefig(outfile, dpi=300)
+    Path(outdir).mkdir(exist_ok=True, parents=True)
+    outfile = Path(outdir) / f"{fig_title.replace(' ', '')}.png"
+    fig.savefig(outfile, dpi=300)
 
     plt.close()
 
@@ -551,13 +591,13 @@ def main(
 
 
 if __name__ == "__main__":
-    SAMPLE_CONFIG_F = "configs/viz_cnv_roh/sample_diagnosis_grouping.yaml"  # example file provided at this path
-    SAMPLENAME_MAP_F = "data/raw/Participant Paper IDs.tsv" # TSV file mapping one ID to another ID. Not included in repo.
-    CYTOBAND_F = "data/external/cytoband/cytoBand_hg38.txt.gz"   # created using snakemake workflow src/viz_cnv_roh/prep_dependencies.smk
-    GENES_F = "data/raw/viz_cnv_roh/hgnc_ucscTableBrowser_hg38_26jun2024_moreHighlights.bed"    # file available at this path
-    BREAKPOINTS_F = "data/raw/viz_cnv_roh/pws_breakpoints.bed"  # file included at this path
-    GAPS_F = "data/external/gaps/aggregated_gaps_hg38.bed"  # created using snakemake workflow src/viz_cnv_roh/prep_dependencies.smk
-    IGNORE_CNV_F = "data/raw/viz_cnv_roh/ignore_cnv.tsv"    # example file provided at this path
+    SAMPLE_CONFIG_F = "configs/viz_cnv_roh/sample_diagnosis_grouping.yaml"  # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
+    SAMPLENAME_MAP_F = "data/raw/Participant Paper IDs.tsv" # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
+    CYTOBAND_F = "data/external/cytoband/cytoBand.txt.gz"   # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
+    GENES_F = "data/raw/viz_cnv_roh/genes/hgnc_ucscTableBrowser_hg38_26jun2024_moreHighlights.bed"  # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
+    BREAKPOINTS_F = "data/raw/viz_cnv_roh/pws_breakpoints.bed"  # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
+    GAPS_F = "data/external/gaps/aggregated_gaps_hg38.bed"  # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
+    IGNORE_CNV_F = "data/raw/viz_cnv_roh/ignore_cnv/ignore_cnv.tsv" # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
 
     QUERY_REGION_LIST = [
         # ("chr1",),
@@ -587,32 +627,35 @@ if __name__ == "__main__":
         # ("chrY",),
     ]
 
-    # ROH pipeline results. Not included in repo. Includes these columns
-    # Chromosome	Start	End	block_label	size_mb	%Homozygosity	filter_pass
+    # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
     ROH_TIMESTAMP = "2024-06-04T10:10:54"
     ROH_DIRPATH = Template(
         f"/projects/PWS/analysis/$SAMPLE_NAME/roh_automap/{ROH_TIMESTAMP}/postprocessing"
     )
-    # False positive ROH calls identified by manual review. Not included in repo. Includes these columns
-    # Chromosome	Start	End	Sample	Paper ID
-    FALSE_POS_ROH_GAPS_F = "data/raw/falsePos_ROH_gaps/falsePos_ROH_gaps.tsv"
+    FALSE_POS_ROH_GAPS_F = "data/raw/falsePos_ROH_gaps/falsePos_ROH_gaps.tsv"   # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
 
-    # CNVs called by CNVpytor. Not included in repo. Includes these columns among
-    # #chromosome	start	end	cnv_type	size	cnv_level_genotyped	sample	caller
+    # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
     CNVPYTOR_DIRPATH = "/projects/PWS/analysis/project_level_analysis/cnvpytor/PWS/analysis"
+
+    # coverage calculated using mosdepth. See readme for how-to.
+    COVERAGE_DIRPATH = "data/processed/mosdepth/chr15"
 
     for QUERY_REGION in QUERY_REGION_LIST:
         print(f"######### Query Region: {QUERY_REGION} #########")
         for DIAGNOSIS_GROUP in [
-            # "TypeI",
-            # "TypeII",
+            "TypeI",
+            "TypeII",
+            # "TypeII_part1",
+            # "TypeII_part2",
             "deletions",
+            "deletions_cov_part2",
+            "deletions_cov_part3",
             "UPD",
             # "all_samples",
             # "all_samples_group_sorted",
         ]:
             print(f"Working on diagnosos group: {DIAGNOSIS_GROUP}")
-            OUTDIR = f"data/processed/python_viz/{strftime('%Y-%m-%d')}/group_by_diagnosis/{DIAGNOSIS_GROUP}"
+            OUTDIR = f"data/processed/python_viz/{strftime('%Y-%m-%d')}_cov/group_by_diagnosis/{DIAGNOSIS_GROUP}"
 
             main(
                 SAMPLE_CONFIG_F,
@@ -625,6 +668,7 @@ if __name__ == "__main__":
                 ROH_DIRPATH,
                 FALSE_POS_ROH_GAPS_F,
                 CNVPYTOR_DIRPATH,
+                COVERAGE_DIRPATH,
                 BREAKPOINTS_F,
                 QUERY_REGION,
                 OUTDIR,
