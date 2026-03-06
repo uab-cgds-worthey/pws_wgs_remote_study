@@ -1,11 +1,11 @@
-# HPOs from PWS survey
+# Map PWS survey to HPO
 
 Surveys (with >300 rows/fields) were collected from the PWS participants. Here, we systematically process these survey
 responses and identify Human Phenotype Ontology (HPO) IDs relevant for each participant.
 
 ## Requirements
 
-* conda
+* conda (v23+)
 
 ## Map HPO to survey fields
 
@@ -26,8 +26,8 @@ if this file is included in the repo or not after we decide on how to proceed**)
 ## How to run
 
 ```sh
-# change into root directory of the repo
-cd path/to/pws_survey_to_hpo
+# change into directory
+cd survey_to_HPO
 
 # create conda environment. Needed only the first time.
 conda env create --file configs/envs/parse_survey.yaml
@@ -36,6 +36,6 @@ conda env create --file configs/envs/parse_survey.yaml
 conda activate parse_survey
 
 # run script
-# see inline comments when calling main() in the script for necessary input requirements
-python src/parse_survey/get_hpo_for_sample.py
+# see inline comments when calling main() in the script for necessary data/input requirements
+python src/get_hpo_for_sample.py
 ```
