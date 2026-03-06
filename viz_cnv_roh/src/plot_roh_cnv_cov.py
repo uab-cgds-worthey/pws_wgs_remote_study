@@ -1,6 +1,6 @@
 """
 Visualizes CNV, ROH and coverage data along with useful annotations.
-This script was modified from src/viz_cnv_roh/plot_roh_cnv.py to add viz support for coverage data.
+This script was modified from src/plot_roh_cnv.py to add viz support for coverage data.
 See if __name__ == "__main__" section for data files needed.
 """
 
@@ -591,13 +591,13 @@ def main(
 
 
 if __name__ == "__main__":
-    SAMPLE_CONFIG_F = "configs/viz_cnv_roh/sample_diagnosis_grouping.yaml"  # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
-    SAMPLENAME_MAP_F = "data/raw/Participant Paper IDs.tsv" # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
-    CYTOBAND_F = "data/external/cytoband/cytoBand.txt.gz"   # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
-    GENES_F = "data/raw/viz_cnv_roh/genes/hgnc_ucscTableBrowser_hg38_26jun2024_moreHighlights.bed"  # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
-    BREAKPOINTS_F = "data/raw/viz_cnv_roh/pws_breakpoints.bed"  # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
-    GAPS_F = "data/external/gaps/aggregated_gaps_hg38.bed"  # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
-    IGNORE_CNV_F = "data/raw/viz_cnv_roh/ignore_cnv/ignore_cnv.tsv" # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
+    SAMPLE_CONFIG_F = "configs/sample_diagnosis_grouping.yaml"  # see src/plot_roh_cnv.py for info on this file
+    SAMPLENAME_MAP_F = "data/raw/Participant Paper IDs.tsv" # see src/plot_roh_cnv.py for info on this file
+    CYTOBAND_F = "data/external/cytoband/cytoBand.txt.gz"   # see src/plot_roh_cnv.py for info on this file
+    GENES_F = "data/raw/genes/hgnc_ucscTableBrowser_hg38_26jun2024_moreHighlights.bed"  # see src/plot_roh_cnv.py for info on this file
+    BREAKPOINTS_F = "data/raw/pws_breakpoints.bed"  # see src/plot_roh_cnv.py for info on this file
+    GAPS_F = "data/external/gaps/aggregated_gaps_hg38.bed"  # see src/plot_roh_cnv.py for info on this file
+    IGNORE_CNV_F = "data/raw/ignore_cnv/ignore_cnv.tsv" # see src/plot_roh_cnv.py for info on this file
 
     QUERY_REGION_LIST = [
         # ("chr1",),
@@ -627,14 +627,14 @@ if __name__ == "__main__":
         # ("chrY",),
     ]
 
-    # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
+    # see src/plot_roh_cnv.py for info on this file
     ROH_TIMESTAMP = "2024-06-04T10:10:54"
     ROH_DIRPATH = Template(
         f"/projects/PWS/analysis/$SAMPLE_NAME/roh_automap/{ROH_TIMESTAMP}/postprocessing"
     )
-    FALSE_POS_ROH_GAPS_F = "data/raw/falsePos_ROH_gaps/falsePos_ROH_gaps.tsv"   # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
+    FALSE_POS_ROH_GAPS_F = "data/raw/falsePos_ROH_gaps/falsePos_ROH_gaps.tsv"   # see src/plot_roh_cnv.py for info on this file
 
-    # see src/viz_cnv_roh/plot_roh_cnv.py for info on this file
+    # see src/plot_roh_cnv.py for info on this file
     CNVPYTOR_DIRPATH = "/projects/PWS/analysis/project_level_analysis/cnvpytor/PWS/analysis"
 
     # coverage calculated using mosdepth. See readme for how-to.

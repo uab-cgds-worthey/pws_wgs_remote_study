@@ -551,13 +551,13 @@ def main(
 
 
 if __name__ == "__main__":
-    SAMPLE_CONFIG_F = "configs/viz_cnv_roh/sample_diagnosis_grouping.yaml"  # example file provided at this path
+    SAMPLE_CONFIG_F = "configs/sample_diagnosis_grouping.yaml"  # example file provided at this path
     SAMPLENAME_MAP_F = "data/raw/Participant Paper IDs.tsv" # TSV file mapping one ID to another ID. Not included in repo.
-    CYTOBAND_F = "data/external/cytoband/cytoBand_hg38.txt.gz"   # created using snakemake workflow src/viz_cnv_roh/prep_dependencies.smk
-    GENES_F = "data/raw/viz_cnv_roh/hgnc_ucscTableBrowser_hg38_26jun2024_moreHighlights.bed"    # file available at this path
-    BREAKPOINTS_F = "data/raw/viz_cnv_roh/pws_breakpoints.bed"  # file included at this path
-    GAPS_F = "data/external/gaps/aggregated_gaps_hg38.bed"  # created using snakemake workflow src/viz_cnv_roh/prep_dependencies.smk
-    IGNORE_CNV_F = "data/raw/viz_cnv_roh/ignore_cnv.tsv"    # example file provided at this path
+    CYTOBAND_F = "data/external/cytoband/cytoBand_hg38.txt.gz"   # created using snakemake workflow src/prep_dependencies.smk
+    GENES_F = "data/raw/hgnc_ucscTableBrowser_hg38_26jun2024_moreHighlights.bed"    # file available at this path
+    BREAKPOINTS_F = "data/raw/pws_breakpoints.bed"  # file included at this path
+    GAPS_F = "data/external/gaps/aggregated_gaps_hg38.bed"  # created using snakemake workflow src/prep_dependencies.smk
+    IGNORE_CNV_F = "data/raw/ignore_cnv.tsv"    # example file provided at this path
 
     QUERY_REGION_LIST = [
         # ("chr1",),
