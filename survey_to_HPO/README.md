@@ -25,6 +25,8 @@ of rows in this file is included in this repo, to demonstrate its file structure
 
 ## How to run
 
+* Build HPO profile from PWS survey
+
 ```sh
 # change into directory
 cd survey_to_HPO
