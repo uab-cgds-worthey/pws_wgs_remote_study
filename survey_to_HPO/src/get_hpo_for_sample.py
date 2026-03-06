@@ -278,8 +278,8 @@ def main(survey_desc_f, choice_config_f, hpo_f, samples_response_dir, out_dir):
 
 
 if __name__ == "__main__":
-    SURVEY_HPO_F = "configs/parse_survey/survey_HPO_added.csv"   # survey key file with manually added HPO related info; example file structure provided.
-    CHOICES_CONFIG_F = "configs/parse_survey/choice_values_to_include.json"  # informs how to process field choices
+    SURVEY_HPO_F = "configs/survey_HPO_added.csv"   # survey key file with manually added HPO related info; example file provided at this path.
+    CHOICES_CONFIG_F = "configs/choice_values_to_include.json"  # informs how to process field choices
     HPO_F = "data/external/hp_12feb2022.obo"    # HPO dataset from https://hpo.jax.org/data/ontology
     SAMPLES_RESPONSE_INDIR = "data/interim/sample_survey_response"    # contains participant survey response files in xlsx format; not included in the repo.
     OUT_DIR = "data/processed/sample_hpo/programmatic_output"
