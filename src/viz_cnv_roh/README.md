@@ -1,6 +1,7 @@
 # Visualize CNVs and ROHs
 
-
+We provide scripts to visualize CNVs and ROHs called in PWS samples, alongside various annotations of interest (PWS
+breakpoints, genes, etc.). Genome sequencing coverage is also visualized providing support for the CNVs called.
 
 ## Requirements
 
@@ -50,7 +51,7 @@ conda activate mosdepth_cov
 # now run mosdepth
 REGION_SIZE="500"
 CHROM="chr15"
-REF="/data/project/worthey_lab/datasets_central/human_reference_genome/processed/GRCh38/no_alt_rel20190408/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna"
+REF="/path/to/human_reference_genome/GRCh38/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna"
 
 for SAMPLE in A B C
 do
