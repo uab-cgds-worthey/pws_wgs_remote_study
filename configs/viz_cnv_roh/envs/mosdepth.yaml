@@ -1,0 +1,8 @@
+name: mosdepth_cov
+
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+  - mosdepth=0.3.12
