@@ -1,4 +1,4 @@
-# CGDS Repository Template [:pencil2: Edit this title]
+# PWS - WGS Remote Study
 
 <!-- markdown-link-check-disable -->
 [![Perform linting -
