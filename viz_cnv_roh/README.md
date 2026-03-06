@@ -5,8 +5,8 @@ breakpoints, genes, etc.). Genome sequencing coverage is also visualized providi
 
 ## Requirements
 
-* Conda
-* Snakemake
+* Conda (v23+)
+* Snakemake (v6+)
 
 ## How to run
 
