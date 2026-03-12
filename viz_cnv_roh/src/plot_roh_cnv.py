@@ -196,8 +196,6 @@ def plot_patches(ax, df, source, colors, ylabel, annotation=False):
                 name = "SNORD115"
             else:
                 continue
-        # else:
-        #     print(name)
 
         # Add annotation
         if annotation:
@@ -262,8 +260,6 @@ def plot_patches(ax, df, source, colors, ylabel, annotation=False):
     ax.set_yticklabels([])
     ax.set_yticks([])
 
-    # no plot borders
-    # ax.axis("off")
 
     # color the spines, ticks and labels
     for spine in ax.spines.values():
@@ -328,7 +324,6 @@ def read_roh_data(fpath, query_region, min_roh_mb=None):
     # restrict to region of interest
     sliced_df = slice_data_by_region(filter_df, query_region)
     if len(sliced_df):
-        # print(sliced_df.head())
         print(sliced_df["size_mb"].sum())
 
     return sliced_df
@@ -489,7 +484,6 @@ def main(
         axes[2].text(imprint_region_end + 30000, 6, "Imprinted domain", va="center")
 
     for i, sample in enumerate(sample_list):
-        # print(sample, samplename_map_dict[sample])
         axes_no = i + extra_rows
 
         ##########  ROH  ##########
