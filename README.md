@@ -9,7 +9,7 @@ Markdown](https://github.com/uab-cgds-worthey/cgds_repo_template/actions/workflo
 
 ## Repository structure
 
-* `viz_cnv_roh` - Visualize CNVs, ROH and coverage
+* [viz_cnv_roh](viz_cnv_roh/README.md) - Visualize CNVs, ROH and coverage
 
 ## Requirements
 
