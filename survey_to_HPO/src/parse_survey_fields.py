@@ -28,7 +28,6 @@ def get_survey_field_mapping(survey_desc_f, choices_to_keep):
         "PWS Anxiousness and Distress Questionnaire Total Score (Questions 1-15)"
     ] = field_info_dict["PADQ Total Score (Questions 1-15)"]
 
-    # print(field_info_dict["general_medical_history.medical_care_defects_kidney_urine"])
 
     return field_info_dict
 
@@ -53,7 +52,6 @@ def main(survey_desc_f, choice_config_f):
 
 
 if __name__ == "__main__":
-    # SURVEY_F = "data/raw/survey_def.csv"
     SURVEY_F = "configs/survey_HPO_added.csv"
 
     CHOICES_CONFIG_F = "configs/choices_to_include.json"

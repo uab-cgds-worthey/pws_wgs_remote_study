@@ -195,7 +195,6 @@ def main(survey_desc_f, choice_config_f, hpo_f, samples_response_dir, out_dir):
         sample_df = pd.read_excel(
             sample_response_f, index_col="Participant ID", names=["Participant ID", "sample"]
         )
-        # print(sample_df.head())
 
         # get survey field mapping to its metadata
         field_info_dict = parse_survey_fields.main(survey_desc_f, choice_config_f)
@@ -245,7 +244,6 @@ def main(survey_desc_f, choice_config_f, hpo_f, samples_response_dir, out_dir):
                 if hpo_id_from_file == "special":
                     pass
                 elif choice not in field_info_dict[field]["choices_to_include"]:
-                    # print(choice, field)
                     continue
 
                 # identify which system level parent HPO ID belongs to.
