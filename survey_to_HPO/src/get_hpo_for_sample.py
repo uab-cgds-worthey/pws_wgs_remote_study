@@ -189,7 +189,6 @@ def main(survey_desc_f, choice_config_f, hpo_f, samples_response_dir, out_dir):
 
     for i, sample_response_f in enumerate(Path(samples_response_dir).glob("*.xlsx")):
 
-        # print("\n\n" + "#" * 50 + "\n")
         print(f"{i+1}. Sample survey response input: {str(sample_response_f)}")
 
         # read sample survey results
