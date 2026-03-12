@@ -172,7 +172,6 @@ def get_hpo_id(
 
     elif hpo_id_from_file in ["manual"]:
         needs_manual_review.append((field_info_dict[field]["question_text"], choice))
-        # print(f"Needs manual review: {field_info_dict[field]['question_text']}:  '{choice}'")
     elif hpo_id_from_file in ["skip", "NA"]:
         pass
     else:
