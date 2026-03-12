@@ -535,9 +535,9 @@ def main(
     fig.suptitle(fig_title, fontsize=14)
 
     # time to save
-    # Path(outdir).mkdir(exist_ok=True, parents=True)
-    # outfile = Path(outdir) / f"{fig_title.replace(' ', '')}.png"
-    # fig.savefig(outfile, dpi=300)
+    Path(outdir).mkdir(exist_ok=True, parents=True)
+    outfile = Path(outdir) / f"{fig_title.replace(' ', '')}.png"
+    fig.savefig(outfile, dpi=300)
 
     plt.close()
 
