@@ -77,9 +77,6 @@ target/
 # mac
 .DS_Store
 
-# exclude data from source control by default
-data/
-
 #snakemake
 .snakemake/
 
