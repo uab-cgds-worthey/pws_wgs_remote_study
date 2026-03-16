@@ -1,0 +1,18 @@
+name: python_viz_pws
+
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+  - python=3.11
+  - pandas=2.2
+  - numpy=1.26
+  - matplotlib=3.8
+  - seaborn=0.13
+  - pyranges=0.1.2
+  - pyyaml==6.0
+  - ruff=0.4
+  - rich=13.7
+  - fire==0.4.0
+  - adjustText
