@@ -11,6 +11,7 @@ Markdown](https://github.com/uab-cgds-worthey/cgds_repo_template/actions/workflo
 
 * [viz_cnv_roh](viz_cnv_roh/README.md) - Visualize CNVs, ROH and coverage
 * [pheno_mdx](pheno_mdx/README.md) - Analyze phenotypes and metadata, vizualize results, plot GS MDx Sankey diagram
+* [survey_to_HPO](survey_to_HPO/README.md) - Build phenotype (HPO) profile for participants from their PWS survey
 
 ## Requirements
 
@@ -18,6 +19,8 @@ Markdown](https://github.com/uab-cgds-worthey/cgds_repo_template/actions/workflo
   * Conda (v23+)
   * Snakemake (v6+)
 * For Phenotype and MDx analysis
+  * Conda (v23+)
+* For HPO profile building
   * Conda (v23+)
 * Common Requirements
   * Git v2.0+
