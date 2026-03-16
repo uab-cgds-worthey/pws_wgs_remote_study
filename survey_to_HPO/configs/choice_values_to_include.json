@@ -1,0 +1,24 @@
+{
+    "0,Very severe - disrupting his/her daily life, requires medical/professional attention or hospitalization | 1,Severe - disruptive at times | 2,Moderate - problem at times but not constant or on-going | 3,Mild - perhaps a single isolated incident, generally not recurring | 4,Don't know": {
+        "Very severe - disrupting his/her daily life, requires medical/professional attention or hospitalization": "0",
+        "Severe - disruptive at times": "1",
+        "Moderate - problem at times but not constant or on-going": "2"
+    },
+    "0,Not True | 1,Sometimes True | 2,Often True": {
+        "Sometimes True": "1",
+        "Often True": "2"
+    },
+    "0,Several times per day | 1,Daily | 2,Weekly | 3,Monthly | 4,A couple of times per year | 5,Less than once per year | 6,Don't know": {
+        "Several times per day": "0",
+        "Daily": "1",
+        "Weekly": "2",
+        "Monthly": "3",
+        "A couple of times per year": "4"
+    },
+    "0,Yes | 1,No | 2,Don't Know": {
+        "Yes": "0"
+    },
+    "$(yndk)": {
+        "Yes": "1"
+    }
+}
