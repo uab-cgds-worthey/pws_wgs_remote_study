@@ -22,7 +22,7 @@ It can built from this subsection of the repo directory like
 ```sh
 cd pheno_mdx
 # build environment using conda
-conda env create -f env/conda-env.yml
+conda env create -f env/pheno-mdx-env.yml
 ```
 
 the environemnt can be activated via
