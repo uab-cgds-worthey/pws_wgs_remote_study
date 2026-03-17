@@ -1,0 +1,32 @@
+comparison,pheno,p-value,adj. p-value
+REVISED_GS_MIXED_MDX,Inflexible adherence to routines,0.1315,0.75082
+REVISED_GS_MIXED_MDX,Impulsivity,0.9034,1.0
+REVISED_GS_MIXED_MDX,Aggressive behavior,0.3655,0.960225
+REVISED_GS_MIXED_MDX,Self- injurious behavior,1.0,1.0
+REVISED_GS_MIXED_MDX,Compulsive behaviors,0.2326,0.75082
+REVISED_GS_MIXED_MDX,Restricted/repetitive behaviors/interests,0.9663,1.0
+REVISED_GS_MIXED_MDX,Abnormal motivation,0.8026,1.0
+REVISED_GS_MIXED_MDX,Depression<br>,0.5565,1.0
+REVISED_GS_MIXED_MDX,Seizure<br>,0.0881,0.75082
+REVISED_GS_MIXED_MDX,Abnormal central motor function<br>,0.4517,1.0
+REVISED_GS_MIXED_MDX,Abnormality of the cardiovascular system,1.0,1.0
+REVISED_GS_MIXED_MDX,Abnormality of the genital system,0.962,1.0
+REVISED_GS_MIXED_MDX,Abnormality of the thyroid gland,0.0665,0.75082
+REVISED_GS_MIXED_MDX,Abnormality of the adrenal glands,0.8843,1.0
+REVISED_GS_MIXED_MDX,Abnormal growth hormone level,0.0254,0.75082
+REVISED_GS_MIXED_MDX,Abnormal glucose homeostasis,0.9144,1.0
+REVISED_GS_MIXED_MDX,Edema,0.7082,1.0
+REVISED_GS_MIXED_MDX,Decreased circulating vitamin D concentration,0.7234,1.0
+REVISED_GS_MIXED_MDX,Bone fracture,0.1478,0.75082
+REVISED_GS_MIXED_MDX,Abnormality of the vertebral column,0.845,1.0
+REVISED_GS_MIXED_MDX,Hip dysplasia,0.1955,0.75082
+REVISED_GS_MIXED_MDX,Reduced bone mineral density,0.2422,0.75082
+REVISED_GS_MIXED_MDX,<br>Suicidal ideation,0.7881,1.0
+REVISED_GS_MIXED_MDX,<br><br>Sleep-related breathing disorders,0.6167,1.0
+REVISED_GS_MIXED_MDX,<br>Excessive daytime somnolence,0.5563,1.0
+REVISED_GS_MIXED_MDX,Hallucinations,0.8708,1.0
+REVISED_GS_MIXED_MDX,Abnormal psychotic pattern,0.3717,0.960225
+REVISED_GS_MIXED_MDX,Attention deficit hyperactivity disorder,0.2226,0.75082
+REVISED_GS_MIXED_MDX,Polyphagia,0.1339,0.75082
+REVISED_GS_MIXED_MDX,Gastroesophageal reflux,0.8674,1.0
+REVISED_GS_MIXED_MDX,Strabismus,0.4119,0.9822230769230769
