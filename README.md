@@ -5,7 +5,9 @@
 Markdown](https://github.com/uab-cgds-worthey/cgds_repo_template/actions/workflows/linting.yml/badge.svg)](https://github.com/uab-cgds-worthey/cgds_repo_template/actions/workflows/linting.yml)
 <!-- markdown-link-check-enable -->
 
-:pencil2: Add description of the project here.
+A collection of scripts, figures, and plots used in analysis of phenotypes and genotypes from genome
+sequences of 50 participants with Prader-Willi Syndrome. Analyses are broken down into specific
+focuses described in more detail in the next section.
 
 ## Repository structure
 
