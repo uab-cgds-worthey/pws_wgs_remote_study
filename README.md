@@ -1,8 +1,8 @@
 # PWS - WGS Remote Study
 
 <!-- markdown-link-check-disable -->
-[![Perform linting -
-Markdown](https://github.com/uab-cgds-worthey/cgds_repo_template/actions/workflows/linting.yml/badge.svg)](https://github.com/uab-cgds-worthey/cgds_repo_template/actions/workflows/linting.yml)
+[![Linting-
+Markdown,Shell](https://github.com/uab-cgds-worthey/pws_wgs_remote_study/actions/workflows/linting.yml/badge.svg)](https://github.com/uab-cgds-worthey/pws_wgs_remote_study/actions/workflows/linting.yml)
 <!-- markdown-link-check-enable -->
 
 A collection of scripts, figures, and plots used in analysis of phenotypes and genotypes from genome
