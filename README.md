@@ -1,9 +1,10 @@
 # PWS - WGS Remote Study
 
-<!-- markdown-link-check-disable -->
+<!-- markdown-link-check-disable-next-line -->
 [![Linting-
 Markdown,Shell](https://github.com/uab-cgds-worthey/pws_wgs_remote_study/actions/workflows/linting.yml/badge.svg)](https://github.com/uab-cgds-worthey/pws_wgs_remote_study/actions/workflows/linting.yml)
-<!-- markdown-link-check-enable -->
+<!-- markdown-link-check-disable-next-line -->
+[![Zenodo DOI](https://zenodo.org/badge/1076218413.svg)](https://doi.org/10.5281/zenodo.19074971)
 
 A collection of scripts, figures, and plots used in analysis of phenotypes and genotypes from genome
 sequences of 50 participants with Prader-Willi Syndrome. Analyses are broken down into specific
